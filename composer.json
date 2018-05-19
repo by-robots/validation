@@ -3,5 +3,10 @@
     "description": "Straightforward and extendable data validation.",
     "type": "library",
     "license": "MIT",
-    "require": {}
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "~7.0"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
