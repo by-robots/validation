@@ -12,16 +12,6 @@ abstract class Rule
     protected $name;
 
     /**
-     * Set the rule's name.
-     *
-     * @param string $name
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-    }
-
-    /**
      * Get the rule's name.
      *
      * @return string
