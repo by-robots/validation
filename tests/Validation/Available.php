@@ -12,8 +12,8 @@ class Available extends TestCase
      */
     public function testRulesLoaded()
     {
-        $validator = new Validation;
-        $available = $validator->available();
+        $validation = new Validation;
+        $available  = $validation->available();
 
         $this->assertTrue(in_array('present', $available));
         $this->assertTrue(in_array('not_empty', $available));
