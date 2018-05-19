@@ -5,6 +5,9 @@ Straightforward and extendable data validation.
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/byrobots/validation/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/byrobots/validation/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/byrobots/validation/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/byrobots/validation/?branch=master)
 
+## WARNING
+This library is currently in development and doesn't work. Do not use it yet!
+
 ## Installation
 **TO DO**
 
