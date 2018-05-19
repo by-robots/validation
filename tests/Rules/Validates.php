@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Rules\Present;
+namespace Tests\Rules;
 
 use ByRobots\Validation\Rules\Present;
 use Tests\TestCase;
