@@ -2,7 +2,7 @@
 
 namespace ByRobots\Validation;
 
-abstract class Rule
+abstract class AbstractRule
 {
     /**
      * The rule's name.
