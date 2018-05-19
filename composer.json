@@ -1,0 +1,7 @@
+{
+    "name": "byrobots/validation",
+    "description": "Straightforward and extendable data validation.",
+    "type": "library",
+    "license": "MIT",
+    "require": {}
+}
