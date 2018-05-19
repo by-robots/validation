@@ -11,6 +11,6 @@ class Present extends AbstractRule
      */
     public function validate($field, array $input, array $params = null): bool
     {
-        //
+        return array_key_exists($field, $input);
     }
 }
