@@ -20,5 +20,20 @@ class Errors extends TestCase
 
         $errors = $validation->errors();
         $this->assertArrayHasKey('foo', $errors);
+        $this->assertEquals(1, count($errors['foo']));
+    }
+
+    /**
+     * When no errors are available FALSE should be returned.
+     */
+    public function testNoErrors()
+    {
+        $validation = new Validation;
+        $validation->validate(
+            ['foo' => 'bar'],
+            ['foo' => ['present', 'not_empty']]
+        );
+
+        $this->assertFalse($validation->errors());
     }
 }

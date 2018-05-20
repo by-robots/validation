@@ -145,12 +145,12 @@ class Validation
     }
 
     /**
-     * Get errors.
+     * Get errors. Returns FALSE if no errors are available.
      *
-     * @rerurn array
+     * @rerurn array|bool
      */
-    public function errors() : array
+    public function errors()
     {
-        return $this->errors;
+        return !empty($this->errors) ? $this->errors : false;
     }
 }
