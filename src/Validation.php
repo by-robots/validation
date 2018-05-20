@@ -29,9 +29,9 @@ class Validation
     private $ruleSet;
 
     /**
-     * The language to use.
+     * Used to retrieve messages.
      *
-     * @var array
+     * @var Language
      */
     private $language;
 
@@ -44,7 +44,7 @@ class Validation
      */
     public function __construct($language = 'en')
     {
-        $this->language = $language;
+        $this->language = new Language($language);
         $this->loadRules();
     }
 
