@@ -97,7 +97,7 @@ class Language
             }
 
             // File exists, load it
-            $this->files[$language] = include __DIR__ . '/../lang/' . $language . '.php';
+            $this->files[$language] = include __DIR__.'/../lang/'.$language.'.php';
         }
 
         return $this->files[$language];
