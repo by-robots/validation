@@ -23,7 +23,7 @@ class Language extends TestCase
     public function testStringNotAvailable()
     {
         $language = new Provider;
-        $entry    = $language->get('present', 'en');
+        $entry    = $language->get('xxxxxx', 'en');
 
         $this->assertNull($entry);
     }
@@ -50,8 +50,19 @@ class Language extends TestCase
         $language = new Provider;
         $language->setDefault('en');
 
-        $entry = $language->get('present', 'xx');
+        $entry = $language->get('present', 'fr');
 
         $this->assertEquals('is not present', $entry);
+    }
+
+    /**
+     * An exception should be thrown when a language file is not found.
+     *
+     * @expectedException \Exception
+     */
+    public function testException()
+    {
+        $language = new Provider;
+        $language->get('present', 'xx');
     }
 }
