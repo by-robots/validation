@@ -36,6 +36,13 @@ class Validation
     private $language;
 
     /**
+     * Will contain errors encountered during validation.
+     *
+     * @var array
+     */
+    private $errors = [];
+
+    /**
      * Set-up the Validation object.
      *
      * @param string $language The language to use for error messages. Will
@@ -99,5 +106,51 @@ class Validation
     public function setRuleset(array $ruleset)
     {
         $this->ruleset = $ruleset;
+    }
+
+    /**
+     * Validate input.
+     *
+     * @param array $input
+     * @param array $ruleset
+     *
+     * @return bool
+     * @throws \Exception
+     */
+    public function validate(array $input = null, array $ruleset = null) : bool
+    {
+        // Set the input and ruleset data if it's been passed here.
+        if ($input) {
+            $this->setInput($input);
+        }
+
+        if ($ruleset) {
+            $this->setRuleset($ruleset);
+        }
+
+        // Reset any errors that may have been encountered through a previous
+        // validation.
+        $this->errors = [];
+
+        // Loop through rulesets and validate them
+        foreach ($this->ruleset as $field => $rules) {
+            foreach ($rules as $rule) {
+                if (!$this->rules[$rule]->validate($field, $this->input)) {
+                    $this->errors[$field][] = $this->language->get($rule);
+                }
+            }
+        }
+
+        return count($this->errors) < 1 ? true : false;
+    }
+
+    /**
+     * Get errors.
+     *
+     * @rerurn array
+     */
+    public function errors() : array
+    {
+        return $this->errors;
     }
 }
