@@ -51,6 +51,13 @@ class Validation
     private $errors = [];
 
     /**
+     * The language to request messages for.
+     *
+     * @var string
+     */
+    private $languageSelection;
+
+    /**
      * Set-up the Validation object.
      *
      * @param string $language The language to use for error messages. Will
@@ -59,7 +66,9 @@ class Validation
      */
     public function __construct($language = 'en')
     {
-        $this->language = new Language($language);
+        $this->language          = new Language;
+        $this->languageSelection = $language;
+
         $this->loadRules();
     }
 
@@ -211,7 +220,7 @@ class Validation
     private function runRule($field, $rule, array $params = [])
     {
         if (!$this->rules[$rule]->validate($field, $this->input, $params)) {
-            $this->errors[$field][] = $this->language->get($rule);
+            $this->errors[$field][] = $this->language->get($rule, $this->languageSelection, $params);
         }
     }
 }

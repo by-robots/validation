@@ -40,15 +40,26 @@ class Language
     }
 
     /**
+     * Get the default language.
+     *
+     * @return string
+     */
+    public function getDefault() : string
+    {
+        return $this->default;
+    }
+
+    /**
      * Get a language entry.
      *
      * @param string $key
      * @param string $language
+     * @param array  $variables
      *
      * @return string|null
      * @throws \Exception
      */
-    public function get($key, $language = null)
+    public function get($key, $language = null, array $variables = [])
     {
         // If no language is specified use the default
         if (!$language) {
@@ -61,13 +72,13 @@ class Language
 
         // Check we have the requested key.
         if (!empty($file[$key])) {
-            return $file[$key];
+            return vsprintf($file[$key], $variables);
         }
 
         // Key not found, or empty. If we're not attempting to get the default
         // language see if we have the key for that.
         if ($language != $this->default) {
-            return $this->get($key, $this->default);
+            return $this->get($key, $this->default, $variables);
         }
 
         // No good, no key in the default language.

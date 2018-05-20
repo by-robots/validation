@@ -65,4 +65,15 @@ class Language extends TestCase
         $language = new Provider;
         $language->get('present', 'xx');
     }
+
+    /**
+     * Messages that accept variables should be compiled correctly.
+     */
+    public function testStringCompilation()
+    {
+        $language = new Provider;
+        $entry    = $language->get('string_between', $language->getDefault(), ['min' => 2, 'max' => 4]);
+
+        $this->assertEquals('must be between 2 and 4 characters', $entry);
+    }
 }

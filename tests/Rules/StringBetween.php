@@ -13,7 +13,7 @@ class StringBetween extends TestCase
     public function testMinValue()
     {
         $rule   = new Rule;
-        $result = $rule->validate('foo', ['foo' => 'bar'], ['min' => 3]);
+        $result = $rule->validate('foo', ['foo' => 'bar'], ['min' => 3, 'max' => 4]);
         $this->assertTrue($result);
     }
 
@@ -24,7 +24,7 @@ class StringBetween extends TestCase
     public function testMaxValue()
     {
         $rule   = new Rule;
-        $result = $rule->validate('foo', ['foo' => 'bar'], ['max' => 3]);
+        $result = $rule->validate('foo', ['foo' => 'bar'], ['min' => 2, 'max' => 3]);
         $this->assertTrue($result);
     }
 
@@ -45,7 +45,17 @@ class StringBetween extends TestCase
     public function testTooShort()
     {
         $rule   = new Rule;
-        $result = $rule->validate('foo', ['foo' => 'bar'], ['max' => 2]);
+        $result = $rule->validate('foo', ['foo' => 'bar'], ['min' => 7, 'max' => 8]);
+        $this->assertFalse($result);
+    }
+
+    /**
+     * When the string is too long validation should fail.
+     */
+    public function testTooLong()
+    {
+        $rule   = new Rule;
+        $result = $rule->validate('foo', ['foo' => 'bar'], ['min' => 1, 'max' => 2]);
         $this->assertFalse($result);
     }
 }

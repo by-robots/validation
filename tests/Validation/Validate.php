@@ -64,6 +64,7 @@ class Validate extends TestCase
             ['foo' => 'bar'],
             ['foo' => ['string_between' => [
                 'min' => 7,
+                'max' => 8,
             ]]]
         );
 
