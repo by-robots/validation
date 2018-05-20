@@ -100,6 +100,18 @@ class Validation
     }
 
     /**
+     * Add multiple rules in one go.
+     *
+     * @param array $rules
+     */
+    public function addRules(array $rules)
+    {
+        foreach ($rules as $rule) {
+            $this->addRule($rule);
+        }
+    }
+
+    /**
      * Returns an array of available rules.
      *
      * @return array
