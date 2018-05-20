@@ -19,7 +19,7 @@ class Validation
      *
      * @var array
      */
-    private $data;
+    private $input;
 
     /**
      * Rules to validate $data against.
@@ -79,5 +79,25 @@ class Validation
     public function available() : array
     {
        return array_keys($this->rules);
+    }
+
+    /**
+     * Add input to be validated.
+     *
+     * @param array $input
+     */
+    public function setInput(array $input)
+    {
+        $this->input = $input;
+    }
+
+    /**
+     * Set the rule set to validate $this->>input against.
+     *
+     * @param array $ruleSet
+     */
+    public function setRuleSet(array $ruleSet)
+    {
+        $this->ruleSet = $ruleSet;
     }
 }
