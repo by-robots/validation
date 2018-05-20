@@ -15,10 +15,36 @@ class Validation
     private $rules;
 
     /**
-     * Set-up the Validation object.
+     * Data to validate.
+     *
+     * @var array
      */
-    public function __construct()
+    private $data;
+
+    /**
+     * Rules to validate $data against.
+     *
+     * @var array
+     */
+    private $ruleSet;
+
+    /**
+     * The language to use.
+     *
+     * @var array
+     */
+    private $language;
+
+    /**
+     * Set-up the Validation object.
+     *
+     * @param string $language The language to use for error messages. Will
+     *                         default the en for unavailable languages or
+     *                         language entries.
+     */
+    public function __construct($language = 'en')
     {
+        $this->language = $language;
         $this->loadRules();
     }
 
