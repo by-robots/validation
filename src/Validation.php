@@ -147,7 +147,7 @@ class Validation
     /**
      * Get errors. Returns FALSE if no errors are available.
      *
-     * @rerurn array|bool
+     * @return array|bool
      */
     public function errors()
     {
