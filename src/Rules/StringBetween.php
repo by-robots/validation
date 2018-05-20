@@ -18,11 +18,11 @@ class StringBetween extends AbstractRule
     {
         $stringLength = strlen($input[$field]);
 
-        if (isset($params['min']) and $stringLength < $params['min']) {
+        if ($stringLength < $params['min']) {
             return false;
         }
 
-        if (isset($params['max']) and $stringLength > $params['max']) {
+        if ($stringLength > $params['max']) {
             return false;
         }
 
