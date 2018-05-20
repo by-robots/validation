@@ -36,6 +36,13 @@ class Validation
     private $language;
 
     /**
+     * Contains the success status of a validation.
+     *
+     * @var bool
+     */
+    private $success = null;
+
+    /**
      * Will contain errors encountered during validation.
      *
      * @var array
@@ -135,7 +142,19 @@ class Validation
         // Process the ruleset.
         $this->loopRuleset();
 
-        return count($this->errors) < 1 ? true : false;
+        $this->success = count($this->errors) < 1 ? true : false;
+        return $this->success;
+    }
+
+    /**
+     * Has the validation been successful? TRUE if it has, FALSE if not
+     * and NULL if no validation has been run.
+     *
+     * @return bool|null
+     */
+    public function success()
+    {
+        return $this->success;
     }
 
     /**
