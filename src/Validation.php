@@ -26,7 +26,7 @@ class Validation
      *
      * @var array
      */
-    private $ruleSet;
+    private $ruleset;
 
     /**
      * Used to retrieve messages.
@@ -92,12 +92,12 @@ class Validation
     }
 
     /**
-     * Set the rule set to validate $this->>input against.
+     * Set the ruleset to validate $this->input against.
      *
-     * @param array $ruleSet
+     * @param array $ruleset
      */
-    public function setRuleSet(array $ruleSet)
+    public function setRuleset(array $ruleset)
     {
-        $this->ruleSet = $ruleSet;
+        $this->ruleset = $ruleset;
     }
 }
