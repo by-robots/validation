@@ -78,11 +78,6 @@ class Validation
      */
     public function available() : array
     {
-        $available = [];
-        foreach ($this->rules as $name => $rule) {
-            $available[] = $name;
-        }
-
-        return $available;
+       return array_keys($this->rules);
     }
 }
