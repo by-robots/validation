@@ -132,14 +132,8 @@ class Validation
         // validation.
         $this->errors = [];
 
-        // Loop through rulesets and validate them
-        foreach ($this->ruleset as $field => $rules) {
-            foreach ($rules as $rule) {
-                if (!$this->rules[$rule]->validate($field, $this->input)) {
-                    $this->errors[$field][] = $this->language->get($rule);
-                }
-            }
-        }
+        // Process the ruleset.
+        $this->loopRuleset();
 
         return count($this->errors) < 1 ? true : false;
     }
@@ -152,5 +146,34 @@ class Validation
     public function errors()
     {
         return !empty($this->errors) ? $this->errors : false;
+    }
+
+    /**
+     * Loop through a ruleset and send fields rules to be validated.
+     *
+     * @throws \Exception
+     */
+    private function loopRuleset()
+    {
+        foreach ($this->ruleset as $field => $rules) {
+            $this->loopRules($field, $rules);
+        }
+    }
+
+    /**
+     * Loop through a field's rules, validating them one by one.
+     *
+     * @param string $field
+     * @param array  $rules
+     *
+     * @throws \Exception
+     */
+    private function loopRules($field, array $rules)
+    {
+        foreach ($rules as $rule) {
+            if (!$this->rules[$rule]->validate($field, $this->input)) {
+                $this->errors[$field][] = $this->language->get($rule);
+            }
+        }
     }
 }
