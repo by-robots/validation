@@ -86,6 +86,24 @@ class Language
     }
 
     /**
+     * Add a message for a language.
+     *
+     * @param string $language
+     * @param string $rule
+     * @param string $message
+     */
+    public function addMessage($language, $rule, $message)
+    {
+        try {
+            $this->loadLanguage($language);
+        } catch (\Exception $e) {
+            $this->files[$language] = [];
+        }
+
+        $this->files[$language][$rule] = $message;
+    }
+
+    /**
      * Get a language file. Loads it from disc if it hasn't already been loaded,
      * otherwise uses a cached version.
      *

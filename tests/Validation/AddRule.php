@@ -21,4 +21,19 @@ class AddRule extends TestCase
 
         $this->assertTrue(in_array($rule->getName(), $available));
     }
+
+    /**
+     * The rule's custom message should be added.
+     */
+    public function testMessageAdded()
+    {
+        $validation = new Validation;
+        $rule       = new BlankRule;
+        $validation->addRule($rule);
+
+        $this->assertEquals(
+            'is a test',
+            $validation->language->get('blank_rule', 'en')
+        );
+    }
 }

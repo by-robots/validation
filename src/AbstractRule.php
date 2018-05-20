@@ -12,6 +12,15 @@ abstract class AbstractRule
     protected $name;
 
     /**
+     * The rule's messages, specified as [$lang => $string]. Only used
+     * when add custom rules.
+     *
+     * @var array
+     */
+    protected $messages = [];
+
+
+    /**
      * Get the rule's name.
      *
      * @return string
@@ -19,6 +28,16 @@ abstract class AbstractRule
     public function getName() : string
     {
         return $this->name;
+    }
+
+    /**
+     * Get the rule's messages.
+     *
+     * @return array
+     */
+    public function getMessages() : array
+    {
+        return $this->messages;
     }
 
     /**

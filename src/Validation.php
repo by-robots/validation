@@ -34,7 +34,7 @@ class Validation
      *
      * @var Language
      */
-    private $language;
+    public $language;
 
     /**
      * Contains the success status of a validation.
@@ -92,6 +92,10 @@ class Validation
     {
         if (!isset($this->rules[$rule->getName()])) {
             $this->rules[$rule->getName()] = $rule;
+
+            foreach ($rule->getMessages() as $language => $message) {
+                $this->language->addMessage($language, $rule->getName(), $message);
+            }
         }
     }
 
@@ -209,7 +213,7 @@ class Validation
     }
 
     /**
-     * Run a rule with params.
+     * Run a validation rule.
      *
      * @param string $field
      * @param string $rule
