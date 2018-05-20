@@ -4,6 +4,7 @@ namespace ByRobots\Validation;
 
 use ByRobots\Validation\Rules\NotEmpty;
 use ByRobots\Validation\Rules\Present;
+use ByRobots\Validation\Rules\StringBetween;
 
 class Validation
 {
@@ -67,7 +68,7 @@ class Validation
      */
     private function loadRules()
     {
-        $coreRules = [new NotEmpty, new Present];
+        $coreRules = [new NotEmpty, new Present, new StringBetween];
         foreach ($coreRules as $rule) {
             $this->addRule($rule);
         }
@@ -189,10 +190,28 @@ class Validation
      */
     private function loopRules($field, array $rules)
     {
-        foreach ($rules as $rule) {
-            if (!$this->rules[$rule]->validate($field, $this->input)) {
-                $this->errors[$field][] = $this->language->get($rule);
+        foreach ($rules as $key => $value) {
+            if (is_array($value)) {
+                $this->runRule($field, $key, $value);
+            } else {
+                $this->runRule($field, $value);
             }
+        }
+    }
+
+    /**
+     * Run a rule with params.
+     *
+     * @param string $field
+     * @param string $rule
+     * @param array  $params
+     *
+     * @throws \Exception
+     */
+    private function runRule($field, $rule, array $params = [])
+    {
+        if (!$this->rules[$rule]->validate($field, $this->input, $params)) {
+            $this->errors[$field][] = $this->language->get($rule);
         }
     }
 }

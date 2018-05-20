@@ -53,4 +53,20 @@ class Validate extends TestCase
 
         $this->assertTrue($result);
     }
+
+    /**
+     * Any params available should be to the rule for validation.
+     */
+    public function testParams()
+    {
+        $validation = new Validation;
+        $result     = $validation->validate(
+            ['foo' => 'bar'],
+            ['foo' => ['string_between' => [
+                'min' => 7,
+            ]]]
+        );
+
+        $this->assertFalse($result);
+    }
 }
