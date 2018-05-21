@@ -15,7 +15,8 @@ class Available extends TestCase
         $validation = new Validation;
         $available  = $validation->available();
 
-        $this->assertTrue(in_array('present', $available));
         $this->assertTrue(in_array('not_empty', $available));
+        $this->assertTrue(in_array('present', $available));
+        $this->assertTrue(in_array('string_between', $available));
     }
 }

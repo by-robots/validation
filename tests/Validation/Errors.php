@@ -3,6 +3,8 @@
 namespace Tests\Validation;
 
 use ByRobots\Validation\Validation;
+use Tests\Stubs\AlwaysFails;
+use Tests\Stubs\AlwaysPasses;
 use Tests\TestCase;
 
 class Errors extends TestCase
@@ -13,10 +15,9 @@ class Errors extends TestCase
     public function testErrorsAvailable()
     {
         $validation = new Validation;
-        $validation->validate(
-            ['foo' => ''],
-            ['foo' => ['present', 'not_empty']]
-        );
+
+        $validation->addRule(new AlwaysFails);
+        $validation->validate(['foo' => 'bar'], ['foo' => ['always_fails']]);
 
         $errors = $validation->errors();
         $this->assertArrayHasKey('foo', $errors);
@@ -29,10 +30,9 @@ class Errors extends TestCase
     public function testNoErrors()
     {
         $validation = new Validation;
-        $validation->validate(
-            ['foo' => 'bar'],
-            ['foo' => ['present', 'not_empty']]
-        );
+
+        $validation->addRule(new AlwaysPasses);
+        $validation->validate(['foo' => 'bar'], ['foo' => ['always_passes']]);
 
         $this->assertFalse($validation->errors());
     }

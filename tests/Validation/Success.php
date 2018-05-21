@@ -2,6 +2,8 @@
 
 namespace Tests\Validation;
 
+use Tests\Stubs\AlwaysFails;
+use Tests\Stubs\AlwaysPasses;
 use Tests\TestCase;
 use ByRobots\Validation\Validation;
 
@@ -13,10 +15,9 @@ class Success extends TestCase
     public function testSuccessful()
     {
         $validation = new Validation;
-        $validation->validate(
-            ['foo' => 'bar'],
-            ['foo' => ['present', 'not_empty']]
-        );
+
+        $validation->addRule(new AlwaysPasses);
+        $validation->validate(['foo' => 'bar'], ['foo' => ['always_passes']]);
 
         $this->assertTrue($validation->success());
     }
@@ -27,10 +28,9 @@ class Success extends TestCase
     public function testUnsuccessful()
     {
         $validation = new Validation;
-        $validation->validate(
-            ['foo' => ''],
-            ['foo' => ['present', 'not_empty']]
-        );
+
+        $validation->addRule(new AlwaysFails);
+        $validation->validate(['foo' => 'bar'], ['foo' => ['always_fails']]);
 
         $this->assertFalse($validation->success());
     }
