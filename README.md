@@ -18,6 +18,7 @@ This library is currently in development and doesn't work. Do not use it yet!
 - `not_empty` The field has a value.
 - `present` The field is present but is not necessarily filled.
 - `string_between` The given string is equal to, or between, the `min` and `max` values.
+- `valid_email` The field contains a valid email address.
 
 ## Custom Rules
 **TO DO**
