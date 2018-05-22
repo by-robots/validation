@@ -2,8 +2,14 @@
 
 namespace ByRobots\Validation;
 
+use ByRobots\Validation\Rules\ArrayType;
+use ByRobots\Validation\Rules\BooleanType;
 use ByRobots\Validation\Rules\Email;
+use ByRobots\Validation\Rules\FloatType;
+use ByRobots\Validation\Rules\IntegerType;
 use ByRobots\Validation\Rules\NotEmpty;
+use ByRobots\Validation\Rules\NullType;
+use ByRobots\Validation\Rules\ObjectType;
 use ByRobots\Validation\Rules\Present;
 use ByRobots\Validation\Rules\StringBetween;
 use ByRobots\Validation\Rules\StringType;
@@ -80,8 +86,14 @@ class Validation
     private function loadRules()
     {
         $coreRules = [
+            new ArrayType,
+            new BooleanType,
             new Email,
+            new FloatType,
+            new IntegerType,
             new NotEmpty,
+            new NullType,
+            new ObjectType,
             new Present,
             new StringBetween,
             new StringType,
