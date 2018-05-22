@@ -13,7 +13,7 @@ class Email extends TestCase
     public function testValid()
     {
         $rule   = new Rule;
-        $result = $rule->validate('foo', ['foo' => 'skynet@by-robots.com']);
+        $result = $rule->validate('foo', ['foo' => $this->faker->email]);
         $this->assertTrue($result);
     }
 
@@ -23,7 +23,7 @@ class Email extends TestCase
     public function testInvalid()
     {
         $rule   = new Rule;
-        $result = $rule->validate('foo', ['foo' => 'not an email address']);
+        $result = $rule->validate('foo', ['foo' => $this->faker->word]);
         $this->assertFalse($result);
     }
 }
