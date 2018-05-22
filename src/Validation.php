@@ -6,6 +6,7 @@ use ByRobots\Validation\Rules\Email;
 use ByRobots\Validation\Rules\NotEmpty;
 use ByRobots\Validation\Rules\Present;
 use ByRobots\Validation\Rules\StringBetween;
+use ByRobots\Validation\Rules\StringType;
 
 class Validation
 {
@@ -78,7 +79,14 @@ class Validation
      */
     private function loadRules()
     {
-        $coreRules = [new NotEmpty, new Present, new StringBetween, new Email];
+        $coreRules = [
+            new Email,
+            new NotEmpty,
+            new Present,
+            new StringBetween,
+            new StringType,
+        ];
+
         foreach ($coreRules as $rule) {
             $this->addRule($rule);
         }

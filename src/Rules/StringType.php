@@ -16,6 +16,6 @@ class StringType extends AbstractRule
      */
     public function validate($field, array $input, array $params = null): bool
     {
-        //
+        return is_string($input[$field]);
     }
 }
