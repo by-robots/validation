@@ -2,23 +2,23 @@
 
 namespace tests\Rules;
 
-use ByRobots\Validation\Rules\StringType as Rule;
+use ByRobots\Validation\Rules\IntegerType as Rule;
 use Tests\TestCase;
 
-class StringType extends TestCase
+class IntegerType extends TestCase
 {
     /**
-     * When column is a string the rule should return true.
+     * When column is an integer the rule should return true.
      */
     public function testValid()
     {
         $rule   = new Rule;
-        $result = $rule->validate('foo', ['foo' => $this->faker->word]);
+        $result = $rule->validate('foo', ['foo' => 1]);
         $this->assertTrue($result);
     }
 
     /**
-     * When the column is not a string it should return false.
+     * When the column is not an integer it should return false.
      */
     public function testInvalid()
     {
@@ -27,9 +27,9 @@ class StringType extends TestCase
             'array'   => [],
             'boolean' => true,
             'float'   => mt_rand() / mt_getrandmax(),
-            'integer' => mt_rand(1000, 9999),
             'null'    => null,
             'object'  => new \stdClass,
+            'string'  => $this->faker->sentence,
         ];
 
         foreach ($types as $type => $value) {
