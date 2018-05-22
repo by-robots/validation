@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'is_string'      => 'is not a string',
     'not_empty'      => 'can not be empty',
     'present'        => 'is not present',
     'string_between' => 'must be between %d and %d characters',
