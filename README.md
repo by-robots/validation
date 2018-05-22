@@ -15,7 +15,13 @@ This library is currently in development and doesn't work. Do not use it yet!
 **TO DO**
 
 ## Available Rules
-- `is_string` Validates if the input os of the PHP data type `string`.
+- `is_array` Validates if the input is of the PHP data type `array`.
+- `is_boolean` Validates if the input is of the PHP data type `boolean`.
+- `is_float` Validates if the input is of the PHP data type `float`.
+- `is_integer` Validates if the input is of the PHP data type `integer`.
+- `is_null` Validates if the input is of the PHP data type `null`.
+- `is_object` Validates if the input is of the PHP data type `object`.
+- `is_string` Validates if the input is of the PHP data type `string`.
 - `not_empty` The field has a value.
 - `present` The field is present but is not necessarily filled.
 - `string_between` The given string is equal to, or between, the `min` and `max` values.
