@@ -12,4 +12,5 @@ return [
     'present'        => 'is not present',
     'string_between' => 'must be between %d and %d characters',
     'valid_email'    => 'is not a valid email',
+    'valid_url'      => 'is not a valid URL',
 ];

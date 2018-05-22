@@ -13,6 +13,7 @@ use ByRobots\Validation\Rules\ObjectType;
 use ByRobots\Validation\Rules\Present;
 use ByRobots\Validation\Rules\StringBetween;
 use ByRobots\Validation\Rules\StringType;
+use ByRobots\Validation\Rules\URL;
 
 class Validation
 {
@@ -97,6 +98,7 @@ class Validation
             new Present,
             new StringBetween,
             new StringType,
+            new URL,
         ];
 
         foreach ($coreRules as $rule) {
