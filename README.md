@@ -28,6 +28,7 @@ This library is currently in development and doesn't work. Do not use it yet!
 - `string_max` The given string has no more than the number of characters specified in `max`.
 - `string_min` The given string has at least the number of characters as specified in `min`.
 - `valid_email` The field contains a valid email address.
+- `valid_url` The field contains a valid URL.
 
 ## Custom Rules
 **TO DO**
