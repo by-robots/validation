@@ -7,6 +7,8 @@ use ByRobots\Validation\Rules\BooleanType;
 use ByRobots\Validation\Rules\Email;
 use ByRobots\Validation\Rules\FloatType;
 use ByRobots\Validation\Rules\IntegerType;
+use ByRobots\Validation\Rules\StringMax;
+use ByRobots\Validation\Rules\StringMin;
 use ByRobots\Validation\Rules\NotEmpty;
 use ByRobots\Validation\Rules\NullType;
 use ByRobots\Validation\Rules\ObjectType;
@@ -97,6 +99,8 @@ class Validation
             new ObjectType,
             new Present,
             new StringBetween,
+            new StringMax,
+            new StringMin,
             new StringType,
             new URL,
         ];

@@ -25,6 +25,8 @@ class Available extends TestCase
         $this->assertTrue(in_array('not_empty', $available));
         $this->assertTrue(in_array('present', $available));
         $this->assertTrue(in_array('string_between', $available));
+        $this->assertTrue(in_array('string_max', $available));
+        $this->assertTrue(in_array('string_min', $available));
         $this->assertTrue(in_array('valid_email', $available));
         $this->assertTrue(in_array('valid_url', $available));
     }
